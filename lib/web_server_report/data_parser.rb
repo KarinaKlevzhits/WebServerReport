@@ -6,7 +6,7 @@ class DataParser
     @data = File.readlines(file_name)
   end
 
-  def parse_data
+  def result_data
     result = []
     @data.each do |page|
       temp = page.split(" ")

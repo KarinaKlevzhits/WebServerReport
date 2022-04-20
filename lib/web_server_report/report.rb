@@ -21,6 +21,6 @@ class Report
   attr_accessor :file_name
 
   def parsed_data
-    DataParser.new(file_name).parse_data
+    DataParser.new(file_name).result_data
   end
 end
