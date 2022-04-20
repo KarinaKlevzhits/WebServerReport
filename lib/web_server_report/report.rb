@@ -18,7 +18,7 @@ class Report
 
   private
 
-  attr_accessor :file_name
+  attr_reader :file_name
 
   def parsed_data
     @parsed_data ||= DataParser.new(file_name).result_data
