@@ -9,11 +9,11 @@ class Report
   end
 
   def all_visits
-    CalculateVisits.new(parsed_data).number_of_visits_pages
+    CalculateVisits.new(@parsed_data).number_of_visits_pages
   end
 
   def most_popular_pages
-    CalculateVisits.new(parsed_data.uniq).number_of_visits_pages
+    CalculateVisits.new(@parsed_data.uniq).number_of_visits_pages
   end
 
   private
@@ -21,6 +21,6 @@ class Report
   attr_accessor :file_name
 
   def parsed_data
-    DataParser.new(file_name).result_data
+    @parsed_data ||= DataParser.new(file_name).result_data
   end
 end
