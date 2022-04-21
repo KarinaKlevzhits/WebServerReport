@@ -1,41 +1,23 @@
 # frozen_string_literal: true
 
 require_relative "web_server_report/version"
-
+require_relative "web_server_report/report"
 # module WebServerReport
 module WebServerReport
-  require_relative "web_server_report/calculate_visits"
-  require_relative "web_server_report/data_parser"
-  # class
-  class Report
-    include CalculateVisits
-
+  # class for print report
+  class PrintReport
     def initialize(file_name)
       @file_name = file_name
     end
 
-    def call
-      most_popular_pages
-      all_visits
-    end
-
-    private
-
-    attr_accessor :file_name
-
-    def all_visits
+    def print_all_visits
       p "All visits for each page"
-      number_of_visits_pages(parsed_data)
+      p Report.new(@file_name).all_visits
     end
 
-    def most_popular_pages
-      p "Most popular pages"
-      number_of_visits_pages(parsed_data.uniq)
-    end
-
-    def parsed_data
-      DataParser.new(file_name).call
+    def print_most_popular_pages
+      p "Most Popular pages"
+      p Report.new(@file_name).most_popular_pages
     end
   end
-  Report.new("./webserver.log").call
 end
